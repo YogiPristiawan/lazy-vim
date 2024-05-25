@@ -123,6 +123,16 @@ return {
                 {
                   type = "pwa-node",
                   request = "launch",
+                  name = "pnpm dev",
+                  -- program = "${workspaceFolder}/app/bin/www",
+                  cwd = "${workspaceFolder}",
+                  runtimeExecutable = "pnpm",
+                  runtimeArgs = { "run", "dev" },
+                  console = "integratedTerminal",
+                },
+                {
+                  type = "pwa-node",
+                  request = "launch",
                   name = "yarn dev",
                   -- program = "${workspaceFolder}/app/bin/www",
                   cwd = "${workspaceFolder}",

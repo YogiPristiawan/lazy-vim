@@ -2,4 +2,20 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-vim.keymap.set("n", "gh", ":lua vim.lsp.buf.hover()<CR>", { desc = "Hover" })
+local function map(mode, lhs, rhs, opts)
+  local options = { noremap = true, silent = true }
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
+-- vim.keymap.set("n", "gh", ":lua vim.lsp.buf.hover()<CR>", { desc = "Hover" })
+
+-- Normal mode mappings
+map("n", "gh", ":lua vim.lsp.buf.hover()<CR>", { desc = "Hover" })
+map("n", "<leader>t", ":TestNearest<CR>")
+map("n", "<leader>T", ":TestFile<CR>")
+map("n", "<leader>a", ":TestSuite<CR>")
+map("n", "<leader>l", ":TestLast<CR>")
+map("n", "<leader>g", ":TestVisit<CR>")
