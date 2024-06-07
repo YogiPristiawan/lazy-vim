@@ -165,6 +165,37 @@ return {
           end,
         },
       },
+      {
+        "xdebug/vscode-php-debug",
+        build = "npm install --legacy-peer-deps && npm run build",
+        config = function()
+          local dap = require("dap")
+
+          dap.adapters.php = {
+            type = "executable",
+            command = "node",
+            args = { os.getenv("HOME") .. "/.local/share/nvim/lazy/vscode-php-debug/out/phpDebug.js" },
+          }
+
+          dap.configurations.php = {
+            {
+              name = "Listen for Xdebug",
+              type = "php",
+              request = "launch",
+              port = 9003,
+            },
+            {
+              name = "Run current script",
+              type = "php",
+              request = "launch",
+              port = 9003,
+              cwd = "${fileDirname}",
+              program = "${file}",
+              runtimeExecutable = "php",
+            },
+          }
+        end,
+      },
     },
   },
 }
