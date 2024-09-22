@@ -29,4 +29,13 @@ return {
       },
     },
   },
+
+  -- git-conflict
+  { "akinsho/git-conflict.nvim", version = "*", config = true },
+
+  -- codeium
+  -- {
+  --   "Exafunction/codeium.vim",
+  --   event = "BufEnter",
+  -- },
 }

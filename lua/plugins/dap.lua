@@ -120,6 +120,7 @@ return {
 
             for _, language in ipairs({ "typescript", "javascript" }) do
               dap.configurations[language] = {
+                -- pnpm
                 {
                   type = "pwa-node",
                   request = "launch",
@@ -130,6 +131,8 @@ return {
                   runtimeArgs = { "run", "dev" },
                   console = "integratedTerminal",
                 },
+
+                -- yarn
                 {
                   type = "pwa-node",
                   request = "launch",
@@ -140,6 +143,8 @@ return {
                   runtimeArgs = { "run", "dev" },
                   console = "integratedTerminal",
                 },
+
+                -- npm
                 {
                   type = "pwa-node",
                   request = "launch",
@@ -150,9 +155,35 @@ return {
                   runtimeArgs = { "run", "start" },
                   console = "integratedTerminal",
                   env = {
-                    NODE_ENV = "development-remote",
+                    NODE_ENV = "development",
                   },
                 },
+                {
+                  type = "pwa-node",
+                  request = "launch",
+                  name = "npm dev",
+                  cwd = "${workspaceFolder}",
+                  runtimeExecutable = "npm",
+                  runtimeArgs = { "run", "dev" },
+                  console = "integratedTerminal",
+                  env = {
+                    NODE_ENV = "development",
+                  },
+                },
+                {
+                  type = "pwa-node",
+                  request = "launch",
+                  name = "npm test",
+                  cwd = "${workspaceFolder}",
+                  runtimeExecutable = "npm",
+                  runtimeArgs = { "run", "test" },
+                  console = "integratedTerminal",
+                  env = {
+                    NODE_ENV = "test",
+                  },
+                },
+
+                -- others
                 {
                   type = "pwa-node",
                   request = "attach",
