@@ -173,10 +173,12 @@ return {
                 {
                   type = "pwa-node",
                   request = "launch",
-                  name = "npm test",
+                  name = "vitest run ${relativeFile}",
                   cwd = "${workspaceFolder}",
                   runtimeExecutable = "npm",
                   runtimeArgs = { "run", "test" },
+                  program = "${workspaceRoot}/node_modules/vitest/vitest.mjs",
+                  args = { "run", "${relativeFile}" },
                   console = "integratedTerminal",
                   env = {
                     NODE_ENV = "test",
