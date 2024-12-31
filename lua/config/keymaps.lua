@@ -13,9 +13,10 @@ end
 -- vim.keymap.set("n", "gh", ":lua vim.lsp.buf.hover()<CR>", { desc = "Hover" })
 
 -- Normal mode mappings
-map("n", "gh", ":lua vim.lsp.buf.hover()<CR>", { desc = "Hover" })
+map("n", "<leader>a", ":TestSuite<CR>")
 map("n", "<leader>t", ":TestNearest<CR>")
 map("n", "<leader>T", ":TestFile<CR>")
-map("n", "<leader>a", ":TestSuite<CR>")
 map("n", "<leader>l", ":TestLast<CR>")
-map("n", "<leader>g", ":TestVisit<CR>")
+-- map("n", "<leader>g", ":TestVisit<CR>")
+map("n", "<leader>cb", "<cmd>AerialToggle!<CR>")
+map("n", "<leader>ct", "<cmd>AerialNavToggle<CR>")

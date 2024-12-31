@@ -3,9 +3,10 @@ return {
     "andweeb/presence.nvim",
     opts = {
       buttons = false,
-      workspace_text = "Working on something",
+      workspace_text = "🐧",
       main_image = "file",
+      editing_text = "sudo rm -rf /",
     },
-    enabled = true,
+    enabled = false,
   },
 }
