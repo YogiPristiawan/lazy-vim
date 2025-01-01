@@ -2,6 +2,7 @@ return {
   {
     "mfussenegger/nvim-dap",
     optional = true,
+    tag = "0.9.0",
     dependencies = {
       {
         "williamboman/mason.nvim",
@@ -103,6 +104,7 @@ return {
       {
         "microsoft/vscode-js-debug",
         build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+        tag = "v1.96.0",
         dependencies = {
           "mxsdev/nvim-dap-vscode-js",
           config = function()
@@ -170,19 +172,31 @@ return {
                     NODE_ENV = "development",
                   },
                 },
+                -- {
+                --   type = "pwa-node",
+                --   request = "launch",
+                --   name = "vitest run ${relativeFile}",
+                --   cwd = "${workspaceFolder}",
+                --   runtimeExecutable = "npm",
+                --   runtimeArgs = { "run", "test" },
+                --   program = "${workspaceRoot}/node_modules/vitest/vitest.mjs",
+                --   args = { "run", "${relativeFile}" },
+                --   console = "integratedTerminal",
+                --   env = {
+                --     NODE_ENV = "test",
+                --   },
+                -- },
                 {
                   type = "pwa-node",
                   request = "launch",
                   name = "vitest run ${relativeFile}",
                   cwd = "${workspaceFolder}",
-                  runtimeExecutable = "npm",
-                  runtimeArgs = { "run", "test" },
-                  program = "${workspaceRoot}/node_modules/vitest/vitest.mjs",
-                  args = { "run", "${relativeFile}" },
+                  runtimeExecutable = "vitest",
+                  runtimeArgs = { "run", "${relativeFile}" },
                   console = "integratedTerminal",
-                  env = {
-                    NODE_ENV = "test",
-                  },
+                  -- env = {
+                  --   NODE_ENV = "test",
+                  -- },
                 },
 
                 -- others
