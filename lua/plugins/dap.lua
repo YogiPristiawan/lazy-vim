@@ -126,20 +126,37 @@ return {
                 {
                   type = "pwa-node",
                   request = "launch",
+                  name = "Launch Current File (pwa-node with tsx)",
+                  cwd = "${workspaceFolder}",
+                  runtimeExecutable = "tsx",
+                  args = { "${file}" },
+                  sourceMaps = true,
+                  protocol = "inspector",
+                  skipFiles = {
+                    "<node_internals>/**",
+                    "${workspaceFolder}/**/node_modules/**",
+                    "${workspaceFolder}/node_modules/**",
+                  },
+                  resolveSourceMapLocations = {
+                    "${workspaceFolder}/**",
+                    "!**/node_modules/**",
+                  },
+                },
+
+                {
+                  type = "pwa-node",
+                  request = "launch",
                   name = "pnpm dev",
-                  -- program = "${workspaceFolder}/app/bin/www",
                   cwd = "${workspaceFolder}",
                   runtimeExecutable = "pnpm",
                   runtimeArgs = { "run", "dev" },
                   console = "integratedTerminal",
                 },
-
                 -- yarn
                 {
                   type = "pwa-node",
                   request = "launch",
                   name = "yarn dev",
-                  -- program = "${workspaceFolder}/app/bin/www",
                   cwd = "${workspaceFolder}",
                   runtimeExecutable = "yarn",
                   runtimeArgs = { "run", "dev" },
@@ -172,20 +189,6 @@ return {
                     NODE_ENV = "development",
                   },
                 },
-                -- {
-                --   type = "pwa-node",
-                --   request = "launch",
-                --   name = "vitest run ${relativeFile}",
-                --   cwd = "${workspaceFolder}",
-                --   runtimeExecutable = "npm",
-                --   runtimeArgs = { "run", "test" },
-                --   program = "${workspaceRoot}/node_modules/vitest/vitest.mjs",
-                --   args = { "run", "${relativeFile}" },
-                --   console = "integratedTerminal",
-                --   env = {
-                --     NODE_ENV = "test",
-                --   },
-                -- },
                 {
                   type = "pwa-node",
                   request = "launch",
@@ -194,11 +197,7 @@ return {
                   runtimeExecutable = "vitest",
                   runtimeArgs = { "run", "${relativeFile}" },
                   console = "integratedTerminal",
-                  -- env = {
-                  --   NODE_ENV = "test",
-                  -- },
                 },
-
                 -- others
                 {
                   type = "pwa-node",

@@ -7,6 +7,6 @@ return {
       main_image = "file",
       editing_text = "sudo rm -rf /",
     },
-    enabled = true,
+    enabled = false,
   },
 }
